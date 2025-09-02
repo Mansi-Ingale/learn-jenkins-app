@@ -36,6 +36,7 @@ pipeline{
                     node --version
                     npm --version
                     npm test
+                    test -f build/index.html
                 """
             }
         }
