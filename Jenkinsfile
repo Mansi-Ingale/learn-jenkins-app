@@ -11,12 +11,12 @@ pipeline{
             }
             steps{
                 sh """
-                    ls -la
-                    node --version
-                    npm --version
+                    //ls -la
+                    //node --version
+                    //npm --version
                     npm ci
                     npm run build
-                    ls -la
+                    //ls -la
                 """
             }
         }
@@ -33,12 +33,18 @@ pipeline{
 
             steps{
                 sh """
-                    node --version
-                    npm --version
+                    //node --version
+                    //npm --version
                     npm test
                     test -f build/index.html
                 """
             }
+        }
+    }
+
+    post{
+        always{
+            junit 'test-results/junit.xml'
         }
     }
 }
