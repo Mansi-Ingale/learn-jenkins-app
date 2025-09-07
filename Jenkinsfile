@@ -2,10 +2,10 @@ pipeline{
     agent any
 
     stages{
-        //this ia a cooment 
+        //this ia a comment 
         stage('Build'){
             agent{
-                docker{
+                docker{  
                     image 'node:18-alpine'
                     reuseNode true
                 }
@@ -52,7 +52,7 @@ pipeline{
                     npm install serve
                     node_modules/.bin/serve -s build &
                     sleep 10
-                    npx playwright test
+                    npx playwright test --reporter=html
                 """
             }
         }
